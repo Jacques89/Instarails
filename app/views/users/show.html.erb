@@ -10,16 +10,19 @@
 
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
-        <h2 class="username">luanotes</h2>
+        <h2 class="username"><%= @user.username %></h2>
+        <% if @user == current_user %>
+          <a class="edit-profile" href="<%= edit_user_path(@user) %>">
         <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
+        <% end %>
       </div>
       <ul class="posts">
         <li><span><%= @posts.count %></span> posts</li>
       </ul>
-      <h2 class="name">Luan Nguyen</h2>
-      <a class="website">luanotes.com</a>
+      <h2 class="name"><%@user.name %></h2>
+      <%=link_to @user.website, @user.website, class: 'website' %>
     </div>
   </div>
 </div>
