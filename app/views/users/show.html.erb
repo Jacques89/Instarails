@@ -2,7 +2,9 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="https://www.w3schools.com/images/picture.jpg" alt="mountain">
+        <% if current_user.avatar.attached? %>
+         <%= image_tag current_user.avatar %>
+         <% end %>
       </div>
     </div>
 
@@ -14,9 +16,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>12</span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
+        <li><span><%= @posts.count %></span> posts</li>
       </ul>
       <h2 class="name">Luan Nguyen</h2>
       <a class="website">luanotes.com</a>
@@ -44,13 +44,9 @@
 </div>
 
 <div class="user-images">
-  <div class="wrapper">
-    <img src="your_image_url">
-  </div>
-  <div class="wrapper">
-    <img src="your_image_url">
-  </div>
-  <div class="wrapper">
-    <img src="your_image_url">
-  </div>
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=image_tag post.image %>
+    </div>
+  <% end %>
 </div>
